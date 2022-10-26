@@ -1,8 +1,16 @@
 import Localbase from "localbase";
 import QuestionData, { version } from "../450DSAFinal";
+
+
+
+
 let db = new Localbase("db");
+
 window.db = db;
+
+
 db.config.debug = false;
+
 const localVersion = localStorage.getItem("450version");
 window.localVersion = localVersion;
 window.version = version;
@@ -14,18 +22,21 @@ export function insertData(callback) {
 	getData(callback);
 }
 
-export function getData(callback) {
+export function getData(callback) 
+{
 	db.collection("450dsaArchive")
 		.get()
 		.then((data) => {
 			if (data.length === 0) {
 				insertData(callback);
-			} else {
+			} 
+			else 
+			{
 				data.sort((a, b) => {
 					return a.position - b.position;
 				});
 				if (localVersion === null || localVersion === undefined) {
-					localStorage.setItem("450version", 100000000);
+					localStorage.setItem("450version",  100);
 					setTimeout(() => {
 						window.location.reload();
 					}, 3000);

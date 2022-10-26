@@ -11,6 +11,8 @@ import { ThemeContext } from "../../App";
 import "./topicCard.css";
 
 export default function TopicCard({ questionData }) {
+
+
   const dark = useContext(ThemeContext);
 
   // This component takes all the topicsData(here questionData ) and renders a TopicCard Component
@@ -22,11 +24,15 @@ export default function TopicCard({ questionData }) {
 
   let totalSolved = 0;
   let totalQuestions = 0;
+
   // Mapping questionData to topicCard array
+
   let topicCard = questionData.map((topic, index) => {
+
     let { topicName, doneQuestions, questions, started } = topic;
     let percentDone = findPercentage(doneQuestions, questions.length);
     let questionsRemainig = questions.length - doneQuestions;
+    
     //adding solved questions of every topic to totalSolved
     totalSolved += doneQuestions;
     totalQuestions += questions.length;
@@ -60,7 +66,7 @@ export default function TopicCard({ questionData }) {
                           className="float-right"
                           style={{ fontWeight: "500", cursor: "pointer" }}
                         >
-                          {questionsRemainig === 0 ? "Done 👏🏻" : "Solve Now 🙇🏻‍♂️"}
+                          {questionsRemainig === 0 ? "Done 👏🏻" : "Solve Now 🙇🏻"}
                         </Badge>
                       </h4>
                     </Col>
@@ -137,14 +143,7 @@ export default function TopicCard({ questionData }) {
   });
   return (
     <>
-      <h3 className="app-heading2 text-center mb-3">
-        Solve DSA problem to master in DSA{" "}
-        <span role="img" aria-label="fire">
-          🔥
-        </span>
-      </h3>
-      <br />
-      <br />
+      
 
 
       <h4 className="text-center mb-4">

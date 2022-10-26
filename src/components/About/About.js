@@ -6,11 +6,14 @@ import Spinner from "react-bootstrap/Spinner";
 import Fade from "react-reveal/Fade";
 
 export default function About({ resetData, exportData, importData }) {
+	
 	const inputFile = useRef(null);
 	let history = useNavigate();
 	const [importSpinnerState, setImportSpinnerState] = useState(false);
 	const [exportSpinnerState, setExportSpinnerState] = useState(false);
+
 	// About component takes resetData() from App <Component> to trigger DB data reset
+
 	function handleChange(e) {
 		const fileReader = new FileReader();
 		fileReader.readAsText(e.target.files[0], "UTF-8");
@@ -25,13 +28,13 @@ export default function About({ resetData, exportData, importData }) {
 	return (
 		<>
 			<div className="container">
-				<Fade duration={500}>
+				<Fade duration={900}>
 					<div className="container my-5">
-						<Alert variant="success">
+						<Alert variant="succes">
 							<Alert.Heading className="text-center">About</Alert.Heading>
 							<hr />
 							<h4 className="text-center">
-								DSA.FAN Tracker helps you build your confidence in solving any coding <br /> related question and helps you
+								PLACEMENT PREP Tracker helps you build your confidence in solving any coding <br /> related question and helps you
 								prepare for your placements{" "}
 								<span role="img" aria-label="student">
 									👨🏻‍🎓
@@ -41,7 +44,7 @@ export default function About({ resetData, exportData, importData }) {
 					</div>
 					<div className="container my-5">
 						<h2 className="text-center">
-							<a href="#">DSA.FAN</a> is your personal web-based progress tracker based on <br></br>
+							<a href="#">PLACEMENT PREP TRACKER</a> is your personal web-based progress tracker based on <br></br>
 							<i>
 								<a
 									href="https://drive.google.com/file/d/1FMdN_OCfOI0iAeDlqswCiC2DZzD4nPsb/view"
@@ -57,13 +60,15 @@ export default function About({ resetData, exportData, importData }) {
 						<h4 className="text-center my-5">
 							Project by{" "}
 							<a href="https://www.linkedin.com/in/yash-champaneri-046064205/" target="_blank" rel="noopener noreferrer">
-								Yash
+								Yash, Vinisha, Utkarsh, Harshish
 							</a>{" "}
 							<span role="img" aria-label="code-men">
 								👨🏻‍💻
 							</span>
 						</h4>
 						<h5 className="text-center">
+
+							{/* resetBadges */}
 							<Badge
 								variant="danger"
 								as="a"
@@ -78,6 +83,8 @@ export default function About({ resetData, exportData, importData }) {
 								Reset Progress
 								<Spinner animation="border" variant="light" size="sm" style={exportSpinnerState ? {} : { display: "none" }} />
 							</Badge>{" "}
+
+
 							<Badge
 								variant="warning"
 								as="a"
@@ -91,6 +98,7 @@ export default function About({ resetData, exportData, importData }) {
 							>
 								Export Progress
 							</Badge>{" "}
+							
 							<Badge
 								variant="primary"
 								as="a"

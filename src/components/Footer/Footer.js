@@ -11,7 +11,7 @@ function Footer({ dark, setDark }) {
 			<footer className="footer" style={{ backgroundColor: dark ? "#393E46" : "" ,backgroundImage: dark ? "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)":""}}>
 				<div className="d-flex bd-highlight main">
 					<div className="p-2 bd-highlight">
-						<a href="https://github.com/gamaster616/DSA.FAN_DSA_tracker">
+						<a href="https://github.com/gamaster616/Placement_Prep_Tracker">
 							<h4>
 								<Badge pill variant="light" className="hvr-grow">
 									<span role="img" aria-label="star" className="emojiFix">

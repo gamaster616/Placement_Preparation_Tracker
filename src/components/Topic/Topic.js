@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ToolkitProvider from "react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit";
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from "react-bootstrap/FormControl";
-import Spinner from "react-bootstrap/Spinner";
+
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Badge from "react-bootstrap/Badge";
@@ -99,6 +99,7 @@ function Topic({ data, updateData }) {
 									onClick={() => shownotes(index)}
 								>
 									{question.Notes && question.Notes.length !== 0 ? (
+										// 2 type of symbols for notes
 										<path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V9.5z" />
 									) : (
 										<path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zM2 2.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V8H9.5A1.5 1.5 0 0 0 8 9.5V14H2.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V9.5a.5.5 0 0 1 .5-.5h4.293L9 13.793z" />
@@ -176,6 +177,7 @@ function Topic({ data, updateData }) {
 			</div>
 		);
 	};
+
 	// table config
 	const columns = [
 		{
@@ -208,7 +210,10 @@ function Topic({ data, updateData }) {
 			hidden: true,
 		},
 	];
+
+
 	const rowStyle = { fontSize: "20px" };
+
 	const selectRow = {
 		mode: "checkbox",
 		style: { background: dark ? "#393E46" : "#c8e6c9", fontSize: "24px" },
@@ -216,6 +221,7 @@ function Topic({ data, updateData }) {
 		onSelect: handleSelect,
 		hideSelectAll: true,
 	};
+
 	const sortMode = {
 		dataField: "_is_selected",
 		order: "asc",
@@ -280,9 +286,12 @@ function Topic({ data, updateData }) {
 
 	//Notes component
 	const NoteSection = (props) => {
+
 		let id = localStorage.getItem("cid");
+		console.log(id);
 
 		const [quickNotes, setQuickNotes] = useState(data.questions[id]?.Notes);
+
 		const addnewnotes = (event) => {
 			setQuickNotes(event.target.value);
 		};
@@ -328,7 +337,7 @@ function Topic({ data, updateData }) {
 		);
 	};
 	//function for closing notes
-	function saveAndExitNotes() {
+		function saveAndExitNotes() {
 		document.getElementsByClassName("note-section")[0].style.display = "none";
 		document.getElementsByClassName("note-exit")[0].style.display = "none";
 		document.getElementsByClassName("note-save")[0].style.display = "none";
@@ -349,7 +358,7 @@ function Topic({ data, updateData }) {
 	return (
 		<>
 
-			<br />
+			
 
 			<h1 className="text-center mb-4">
 				{topicName} Problems
@@ -360,10 +369,13 @@ function Topic({ data, updateData }) {
 			</h3>
 
 
+			<br />
 
 			<div className="d-flex justify-content-center">
-				<Spinner animation="grow" variant="success" />
+				<div class="loader"></div>
 			</div>
+			<br />
+			
 
 			<ToolkitProvider
 				className="float-right"
@@ -377,8 +389,10 @@ function Topic({ data, updateData }) {
 					<div>
 						<div className="header-rand">{SearchBar({ ...props.searchProps })}</div>
 
+						
+
 						<div className="container container-custom" style={{ overflowAnchor: "none" }}>
-							<Fade duration={1000}>
+						<Fade duration={1000}>
 								<BootstrapTable {...props.baseProps} selectRow={selectRow} sort={sortMode} classes={dark ? "dark-table" : ""} />
 							</Fade>
 						</div>
